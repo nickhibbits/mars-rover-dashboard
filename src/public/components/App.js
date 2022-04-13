@@ -1,6 +1,7 @@
 import { Greeting } from "./Greeting.js";
 import { ImageOfTheDay } from "./ImageOfTheDay.js";
 import { store } from "../client.js";
+import { Rover } from "./Rover.js";
 
 // create content
 export const App = (state) => {
@@ -22,6 +23,9 @@ export const App = (state) => {
                   but generally help with discoverability of relevant imagery.
               </p>
               ${ImageOfTheDay(apod)}
+          </section>
+          <section>
+          ${Rover(store.rovers[0])}
           </section>
       </main>
       <footer></footer>

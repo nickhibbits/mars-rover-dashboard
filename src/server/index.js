@@ -19,9 +19,26 @@ app.get("/apod", async (req, res) => {
     let image = await fetch(
       `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`
     ).then((res) => res.json());
+
+    console.log("image", image);
     res.send({ image });
   } catch (err) {
     console.log("error:", err);
+  }
+});
+
+// TODO construct router for different mars rovers
+app.get("/rover", async (req, res) => {
+  console.log("getRover");
+
+  try {
+    let rover = await fetch(
+      `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${process.env.API_KEY}`
+    ).then((res) => res.json());
+    res.send({ rover });
+  } catch (error) {
+    console.log("error", error);
+    res.send({ error });
   }
 });
 
