@@ -1,6 +1,7 @@
 import { updateStore } from "../client.js";
 import { store } from "../client.js";
 
+// Example API call
 export const getImageOfTheDay = (state) => {
   let { apod } = state;
 

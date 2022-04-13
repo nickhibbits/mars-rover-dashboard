@@ -2,6 +2,7 @@ import { Greeting } from "./Greeting.js";
 import { ImageOfTheDay } from "./ImageOfTheDay.js";
 import { store } from "../client.js";
 
+// create content
 export const App = (state) => {
   let { rovers, apod } = state;
 

@@ -1,3 +1,4 @@
+// Pure function that renders conditional information -- THIS IS JUST AN EXAMPLE, you can delete it.
 export const Greeting = (name) => {
   if (name) {
     return `
