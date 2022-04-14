@@ -26,6 +26,8 @@ export const App = (state) => {
           </section>
           <section>
           ${Rover(store.rovers[0])}
+          ${Rover(store.rovers[1])}
+          ${Rover(store.rovers[2])}
           </section>
       </main>
       <footer></footer>

@@ -3,7 +3,6 @@ import { store } from "../client.js";
 
 // Example of a pure function that renders infomation requested from the backend
 export const ImageOfTheDay = (apod) => {
-  // If image does not already exist, or it is not from today -- request it again
   const today = new Date();
   const photodate = new Date(apod.date);
   console.log(photodate.getDate(), today.getDate());
