@@ -30,6 +30,8 @@ app.get("/apod", async (req, res) => {
 // TODO construct router for different mars rovers
 app.get("/rover", async (req, res) => {
   console.log("getRover");
+  const { roverName } = req.query;
+  console.log("roverName", roverName);
 
   try {
     let rover = await fetch(
@@ -44,6 +46,8 @@ app.get("/rover", async (req, res) => {
 
 app.get("/roverImages", async (req, res) => {
   console.log("getRoverImages");
+  const { roverName } = req.query;
+  console.log("roverName", roverName);
 
   try {
     let rover = await fetch(

@@ -7,10 +7,10 @@ export const getRoverImages = async (roverName) => {
 
   const roverResponse = await fetch(
     // `http://localhost:3000/rover?name=${roverName}`
-    `http://localhost:3000/roverImages`
+    `http://localhost:3000/roverImages?roverName=${roverName}`
   ).then((res) => res.json());
 
-  // console.log("roverImagesResponse", roverResponse);
+  console.log("roverImagesResponse", roverResponse);
 
   return roverResponse;
 };

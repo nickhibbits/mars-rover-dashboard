@@ -7,7 +7,7 @@ export const getRover = async (roverName) => {
 
   const roverResponse = await fetch(
     // `http://localhost:3000/rover?name=${roverName}`
-    `http://localhost:3000/rover`
+    `http://localhost:3000/rover?roverName=${roverName}`
   ).then((res) => res.json());
 
   console.log("roverResponse", roverResponse);
