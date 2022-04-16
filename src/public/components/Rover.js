@@ -11,6 +11,7 @@ export const Rover = (roverName) => {
   let status;
   let mostRecentPhotos;
   let mostRecentPhotoDates;
+  let photoCount;
 
   if (
     // spreading the Curiosity object from the api call into each rover object
@@ -21,22 +22,25 @@ export const Rover = (roverName) => {
     // console.log("this rover is not in the populated -- fetching");
     getRover(roverName);
   } else {
-    // console.log(
-    //   "store populated, adding rover",
-    //   store.roverManifiests[roverName]
-    // );
+    console.log(
+      "store populated, adding rover",
+      store.roverManifiests[roverName]
+    );
 
     name = store.roverManifiests[roverName].photo_manifest.name;
     landingDate = store.roverManifiests[roverName].photo_manifest.landing_date;
     launchDate = store.roverManifiests[roverName].photo_manifest.launch_date;
     status = store.roverManifiests[roverName].photo_manifest.status;
+    photoCount = store.roverManifiests[roverName].photo_manifest.photos.length;
     // mostRecentPhotos = store.roverManifiests[roverName].photo_manifest.;
     // mostRecentPhotoDates = store.roverManifiests[roverName].photo_manifest.;
+
     return `<ul>
     <h2>${name}</h2>
     <li>Launch Date: ${launchDate}</li>
     <li>Landing Date: ${landingDate}</li>
     <li>Status: ${status}</li>
+    <li>Photos: ${photoCount}</li>
     </ul>`;
   }
 
