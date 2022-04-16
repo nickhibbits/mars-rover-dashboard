@@ -15,12 +15,11 @@ export const ImageOfTheDay = (apod) => {
     return `
             <p>See today's featured video <a href="${apod.url}">here</a></p>
             <p>${apod.title}</p>
-            <p>${apod.explanation}</p>
         `;
   } else {
     return `
             <img src="${apod.image.url}" height="350px" width="100%" />
-            <p>${apod.image.explanation}</p>
+            
         `;
   }
 };

@@ -3,18 +3,20 @@ import { App } from "./components/App.js";
 export let store = {
   user: { name: "Student" },
   apod: "",
-  rovers: {},
-};
-
-export let roversStore = {
-  Curiosity: {
-    name: "Curiosity",
-  },
-  Opportunity: {
-    name: "Opportunity",
-  },
-  Spirit: {
-    name: "Spirit",
+  rovers: ["Curiosity", "Opportunity", "Spirit"],
+  roverManifiests: {
+    Curiosity: {
+      name: "Curiosity",
+      _: "",
+    },
+    Opportunity: {
+      name: "Opportunity",
+      _: "",
+    },
+    Spirit: {
+      name: "Spirit",
+      _: "",
+    },
   },
 };
 
@@ -23,7 +25,7 @@ const root = document.getElementById("root");
 
 export const updateStore = (store, newState) => {
   store = Object.assign(store, newState);
-  console.log("newStore", store);
+  // console.log("newStore", store);
   render(root, store);
 };
 

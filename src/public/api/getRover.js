@@ -1,5 +1,4 @@
 import { updateStore } from "../client.js";
-import { roversStore } from "../client.js";
 import { store } from "../client.js";
 
 // Example API call
@@ -11,16 +10,14 @@ export const getRover = async (roverName) => {
     .then((roverObject) => {
       // console.log("roverObject", roverObject);
 
-      const newRoversObject = {
-        ...roversStore,
-        [roverName]: {
-          ...roverObject.rover.photo_manifest,
-        },
+      const roverManifiests = {
+        ...store.roverManifiests,
+        [roverName]: roverObject.rover,
       };
 
-      const rovers = Object.assign(roversStore, newRoversObject);
+      // console.log("_roverManifiests", roverManifiests);
 
-      updateStore(store, { rovers });
+      updateStore(store, { roverManifiests });
     });
 
   // return roverResponse;
