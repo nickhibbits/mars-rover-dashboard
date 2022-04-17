@@ -18,6 +18,17 @@ export let store = {
       _: "",
     },
   },
+  roverPhotos: {
+    Curiosity: {
+      recentPhotos: [],
+    },
+    Opportunity: {
+      recentPhotos: [],
+    },
+    Spirit: {
+      recentPhotos: [],
+    },
+  },
 };
 
 // add our markup to the page

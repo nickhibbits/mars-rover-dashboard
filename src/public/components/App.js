@@ -12,8 +12,6 @@ export const App = (state) => {
       <main>
           <section>
           ${Rover(store.rovers[0])}
-          ${Rover(store.rovers[1])}
-          ${Rover(store.rovers[2])}
           </section>
       </main>
       <footer></footer>

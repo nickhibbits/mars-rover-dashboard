@@ -29,9 +29,7 @@ app.get("/apod", async (req, res) => {
 
 // TODO construct router for different mars rovers
 app.get("/rover", async (req, res) => {
-  console.log("getRover");
   const { roverName } = req.query;
-  console.log("roverName", roverName);
 
   try {
     let rover = await fetch(
@@ -45,13 +43,12 @@ app.get("/rover", async (req, res) => {
 });
 
 app.get("/roverImages", async (req, res) => {
-  console.log("getRoverImages");
   const { roverName } = req.query;
-  console.log("roverName", roverName);
+  const { maxDate } = req.query;
 
   try {
     let rover = await fetch(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/photos?sol=1000&api_key=${process.env.API_KEY}`
+      `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/photos?earth_date=${maxDate}&api_key=${process.env.API_KEY}`
     ).then((res) => res.json());
     res.send({ rover });
   } catch (error) {
