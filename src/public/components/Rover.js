@@ -22,9 +22,17 @@ export const Rover = (roverName) => {
     if (store.roverPhotos[roverName].recentPhotos.length == 0) {
       getRoverImages(roverName, latestPhotoDate);
     } else {
-      return `<ul>
+      return `
+      <style>
+      img {
+        height: 400px;
+        width: 400px;
+      }
+      </style
+
+      <ul>
       <h2>${name}</h2>
-      <img href="${store.roverPhotos[roverName].recentPhotos[0].img_src}></img>
+      <img src=${store.roverPhotos[roverName].recentPhotos[0].img_src}></img>
       <li>Launch Date: ${launchDate}</li>
       <li>Landing Date: ${landingDate}</li>
       <li>Status: ${status}</li>
