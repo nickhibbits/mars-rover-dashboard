@@ -7,6 +7,7 @@ export const Rover = (roverName) => {
 
   if (Object.values(store.roverManifiests[roverName]).length == 2) {
     getRover(roverName);
+    return `<div>Loading...</div>`;
   } else {
     const name = store.roverManifiests[roverName].photo_manifest.name;
     const landingDate =
@@ -21,23 +22,52 @@ export const Rover = (roverName) => {
 
     if (store.roverPhotos[roverName].recentPhotos.length == 0) {
       getRoverImages(roverName, latestPhotoDate);
+      return `<div>Loading...</div>`;
     } else {
+      const imageSourceArray = store.roverPhotos[roverName].recentPhotos.map(
+        (photo) => {
+          return `<img src=${photo.img_src}></img>`;
+        }
+      );
+
       return `
       <style>
+
+      .header {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
       img {
         height: 400px;
         width: 400px;
       }
-      </style
 
+      .image-container {
+        display: flex;
+        justify-content: row;
+        justify-content: space-evenly;
+        overflow-x: scroll;
+      }
+
+      .button-container {
+        display: flex;
+        align-items: center;
+      }
+     
+      </style>
+
+      <h1 class=header>${name}</h1>
+      <div class=image-container>
+        ${imageSourceArray}
+      </div>
       <ul>
-      <h2>${name}</h2>
-      <img src=${store.roverPhotos[roverName].recentPhotos[0].img_src}></img>
-      <li>Launch Date: ${launchDate}</li>
-      <li>Landing Date: ${landingDate}</li>
-      <li>Status: ${status}</li>
-      <li>Photos: ${photoCount}</li>
-      </ul>`;
+        <li>Launch Date: ${launchDate}</li>
+        <li>Landing Date: ${landingDate}</li>
+        <li>Status: ${status}</li>
+        <li>Latest Photo: ${latestPhotoDate}</li>
+      </ul>
+     `;
     }
   }
 };

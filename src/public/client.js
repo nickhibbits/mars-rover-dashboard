@@ -29,6 +29,7 @@ export let store = {
       recentPhotos: [],
     },
   },
+  currentRoverIndex: 0,
 };
 
 // add our markup to the page

@@ -12,7 +12,7 @@ export const getRoverImages = async (roverName, latestPhotoDate) => {
     .then((roverImageResponse) => {
       // console.log("roverImageResponse", roverImageResponse);
       const roverImagesArray = roverImageResponse.rover;
-      const _roverPhotos = roverImagesArray.photos.slice(0, 5);
+      const _roverPhotos = roverImagesArray.photos.slice(0, 10);
       console.log("_roverPhotos", _roverPhotos);
 
       const roverPhotos = {
