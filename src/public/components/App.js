@@ -1,5 +1,3 @@
-import { Greeting } from "./Greeting.js";
-import { ImageOfTheDay } from "./ImageOfTheDay.js";
 import { store } from "../client.js";
 import { Rover } from "./Rover.js";
 import { RoverButton } from "./RoverButtons.js";
@@ -18,9 +16,9 @@ export const App = (state) => {
       <header></header>
       <main>
         <div class=button-container>
-          ${RoverButton(0)}
-          ${RoverButton(1)}
-          ${RoverButton(2)}
+          ${RoverButton(store, 0)}
+          ${RoverButton(store, 1)}
+          ${RoverButton(store, 2)}
         </div>
         <section>
         ${Rover(store.rovers[store.currentRoverIndex])}
