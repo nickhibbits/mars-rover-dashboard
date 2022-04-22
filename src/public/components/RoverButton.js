@@ -11,8 +11,19 @@ export const RoverButton = (state, index) => {
   }
 
   return `
-  <button onclick="${loadRover(currentRoverIndex)}">${
-    store.rovers[index]
-  }</button>
+
+  <style>
+  
+  .rover-link {
+    cursor: pointer;
+    font-family: var(--secondary-font);
+  }
+  </style>
+
+  <button class=rover-link onclick="${loadRover(currentRoverIndex)}"> 
   `;
 };
+
+{
+  /* <div class="rover-link">${store.rovers[index]}</div> */
+}

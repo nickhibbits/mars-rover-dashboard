@@ -36,6 +36,7 @@ export const Rover = (roverName) => {
       .header {
         font-size: 2rem;
         margin-bottom: 1rem;
+        font-family: var(--main-font);
       }
 
       img {
@@ -50,9 +51,28 @@ export const Rover = (roverName) => {
         overflow-x: scroll;
       }
 
-      .button-container {
+      ul {
+        list-style: none;
+      }
+
+      .rover-info-header {
+        font-family: var(--main-font);
+        font-size: 35px;
+        height: 20px;
+        margin-top: 10px;
+        font-weight: 900;
+      }
+
+      li {
+        font-family: var(--secondary-font);
+        font-size: 2rem;
         display: flex;
-        align-items: center;
+        flex-direction: row;
+        
+      }
+
+      .info-key {
+        font-weight: 900;
       }
      
       </style>
@@ -61,11 +81,24 @@ export const Rover = (roverName) => {
       <div class=image-container>
         ${imageSourceArray}
       </div>
+        <h3 class=rover-info-header>Info</h3>
       <ul>
-        <li>Launch Date: ${launchDate}</li>
-        <li>Landing Date: ${landingDate}</li>
-        <li>Status: ${status}</li>
-        <li>Latest Photo: ${latestPhotoDate}</li>
+        <li>
+          <div class=info-key>Launch Date</div>
+          <div class=info-value>: ${launchDate}</div>
+        </li>
+        <li>
+          <div class=info-key>Landing Date</div>
+          <div class=info-value>: ${landingDate}</div>
+        </li>
+        <li>
+          <div class=info-key>Status</div>
+          <div class=info-value>: ${status}</div>
+        </li>
+        <li>
+          <div class=info-key>Latest Photo</div>
+          <div class=info-value>: ${latestPhotoDate}</div>
+        </li>
       </ul>
      `;
     }
