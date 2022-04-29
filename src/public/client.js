@@ -2,30 +2,18 @@ import { App } from "./components/App.js";
 
 export let store = {
   user: { name: "Student" },
-  apod: "",
-  rovers: ["Curiosity", "Opportunity", "Spirit"],
-  roverManifiests: {
+  roverNames: ["Curiosity", "Opportunity", "Spirit"],
+  roverData: {
     Curiosity: {
-      name: "Curiosity",
-      _: "",
-    },
-    Opportunity: {
-      name: "Opportunity",
-      _: "",
-    },
-    Spirit: {
-      name: "Spirit",
-      _: "",
-    },
-  },
-  roverPhotos: {
-    Curiosity: {
+      roverManifest: {},
       recentPhotos: [],
     },
     Opportunity: {
+      roverManifest: {},
       recentPhotos: [],
     },
     Spirit: {
+      roverManifest: {},
       recentPhotos: [],
     },
   },
@@ -47,9 +35,7 @@ const render = async (root, state) => {
 
 window.loadRover = (index) => {
   console.log("currentRoverIndex", index);
-  let _index = index;
-  _index += 1;
-  updateStore(store, { currentRoverIndex: _index });
+  updateStore(store, { currentRoverIndex: index });
 };
 
 // listening for load event because page should load before any JS is called

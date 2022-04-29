@@ -10,15 +10,22 @@ export const getRover = async (roverName) => {
     .then((roverObject) => {
       // console.log("roverObject", roverObject);
 
-      const roverManifiests = {
-        ...store.roverManifiests,
+      const roverManifiest = {
+        ...store.roverData[roverName].roverManifiests,
         [roverName]: roverObject.rover,
       };
 
       // console.log("_roverManifiests", roverManifiests);
 
-      updateStore(store, { roverManifiests });
-    });
+      const roverData = store.roverData;
 
-  // return roverResponse;
+      updateStore(store, {
+        roverData: {
+          ...roverData,
+          [roverName]: {
+            roverManifest: roverObject.rover,
+          },
+        },
+      });
+    });
 };

@@ -3,7 +3,7 @@ import { RoverButton } from "./RoverButton.js";
 
 // create content
 export const App = (state) => {
-  console.log("currentRoverIndex", state.currentRoverIndex);
+  console.log("state", state);
   return `
   <style>
     .button-container {
@@ -30,7 +30,7 @@ export const App = (state) => {
           ${RoverButton(state, 2)}
         </div>
         <section>
-        ${Rover(state, state.rovers[state.currentRoverIndex])}
+        ${Rover(state, state.roverNames[state.currentRoverIndex])}
         </section>
       </main>
       <footer></footer>

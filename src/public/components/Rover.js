@@ -2,33 +2,33 @@ import { getRover } from "../api/getRover.js";
 import { getRoverImages } from "../api/getRoverImages.js";
 
 export const Rover = (state, roverName) => {
-  // console.log("rover", rover);
-  console.log(
-    "Object.values(state.roverManifiests[roverName])",
-    Object.values(state.roverManifiests[roverName])
-  );
-
-  if (Object.values(state.roverManifiests[roverName]).length == 2) {
+  console.log("roverName", roverName);
+  console.log("state", state);
+  if (
+    !Object.values(state.roverData[roverName].roverManifest) ||
+    Object.values(state.roverData[roverName].roverManifest).length == 0
+  ) {
     getRover(roverName);
     return `<div>Loading...</div>`;
   } else {
-    const name = state.roverManifiests[roverName].photo_manifest.name;
+    const name = state.roverData[roverName].roverManifest.photo_manifest.name;
     const landingDate =
-      state.roverManifiests[roverName].photo_manifest.landing_date;
+      state.roverData[roverName].roverManifest.photo_manifest.landing_date;
     const launchDate =
-      state.roverManifiests[roverName].photo_manifest.launch_date;
-    const status = state.roverManifiests[roverName].photo_manifest.status;
-    const photoCount =
-      state.roverManifiests[roverName].photo_manifest.photos.length;
+      state.roverData[roverName].roverManifest.photo_manifest.launch_date;
+    const status =
+      state.roverData[roverName].roverManifest.photo_manifest.status;
     const latestPhotoDate =
-      state.roverManifiests[roverName].photo_manifest.max_date;
+      state.roverData[roverName].roverManifest.photo_manifest.max_date;
 
-    console.log("state", state);
-    if (state.roverPhotos[roverName].recentPhotos.length == 0) {
+    if (
+      !state.roverData[roverName].recentPhotos ||
+      state.roverData[roverName].recentPhotos.length == 0
+    ) {
       getRoverImages(roverName, latestPhotoDate);
       return `<div>Loading...</div>`;
     } else {
-      const imageSourceArray = state.roverPhotos[roverName].recentPhotos.map(
+      const imageSourceArray = state.roverData[roverName].recentPhotos.map(
         (photo) => {
           return `<img src=${photo.img_src}></img>`;
         }
