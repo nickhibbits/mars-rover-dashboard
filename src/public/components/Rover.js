@@ -1,30 +1,34 @@
 import { getRover } from "../api/getRover.js";
 import { getRoverImages } from "../api/getRoverImages.js";
-import { store } from "../client.js";
 
-export const Rover = (roverName) => {
+export const Rover = (state, roverName) => {
   // console.log("rover", rover);
+  console.log(
+    "Object.values(state.roverManifiests[roverName])",
+    Object.values(state.roverManifiests[roverName])
+  );
 
-  if (Object.values(store.roverManifiests[roverName]).length == 2) {
+  if (Object.values(state.roverManifiests[roverName]).length == 2) {
     getRover(roverName);
     return `<div>Loading...</div>`;
   } else {
-    const name = store.roverManifiests[roverName].photo_manifest.name;
+    const name = state.roverManifiests[roverName].photo_manifest.name;
     const landingDate =
-      store.roverManifiests[roverName].photo_manifest.landing_date;
+      state.roverManifiests[roverName].photo_manifest.landing_date;
     const launchDate =
-      store.roverManifiests[roverName].photo_manifest.launch_date;
-    const status = store.roverManifiests[roverName].photo_manifest.status;
+      state.roverManifiests[roverName].photo_manifest.launch_date;
+    const status = state.roverManifiests[roverName].photo_manifest.status;
     const photoCount =
-      store.roverManifiests[roverName].photo_manifest.photos.length;
+      state.roverManifiests[roverName].photo_manifest.photos.length;
     const latestPhotoDate =
-      store.roverManifiests[roverName].photo_manifest.max_date;
+      state.roverManifiests[roverName].photo_manifest.max_date;
 
-    if (store.roverPhotos[roverName].recentPhotos.length == 0) {
+    console.log("state", state);
+    if (state.roverPhotos[roverName].recentPhotos.length == 0) {
       getRoverImages(roverName, latestPhotoDate);
       return `<div>Loading...</div>`;
     } else {
-      const imageSourceArray = store.roverPhotos[roverName].recentPhotos.map(
+      const imageSourceArray = state.roverPhotos[roverName].recentPhotos.map(
         (photo) => {
           return `<img src=${photo.img_src}></img>`;
         }

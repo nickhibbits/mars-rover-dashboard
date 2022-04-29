@@ -45,6 +45,13 @@ const render = async (root, state) => {
   root.innerHTML = App(state);
 };
 
+window.loadRover = (index) => {
+  console.log("currentRoverIndex", index);
+  let _index = index;
+  _index += 1;
+  updateStore(store, { currentRoverIndex: _index });
+};
+
 // listening for load event because page should load before any JS is called
 window.addEventListener("load", () => {
   render(root, store);

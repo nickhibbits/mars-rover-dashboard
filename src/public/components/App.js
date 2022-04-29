@@ -1,11 +1,9 @@
-import { store } from "../client.js";
 import { Rover } from "./Rover.js";
 import { RoverButton } from "./RoverButton.js";
 
 // create content
 export const App = (state) => {
-  let { rovers, apod } = state;
-
+  console.log("currentRoverIndex", state.currentRoverIndex);
   return `
   <style>
     .button-container {
@@ -27,13 +25,12 @@ export const App = (state) => {
       <main>
       <h1 class=main-header>Mars Rover Dashboard</h1>
         <div class=button-container>
-          ${RoverButton(store, 0)}
-          ${RoverButton(store, 1)}
-          ${RoverButton(store, 2)}
+          ${RoverButton(state, 0)}
+          ${RoverButton(state, 1)}
+          ${RoverButton(state, 2)}
         </div>
         <section>
-
-        ${Rover(store.rovers[store.currentRoverIndex])}
+        ${Rover(state, state.rovers[state.currentRoverIndex])}
         </section>
       </main>
       <footer></footer>

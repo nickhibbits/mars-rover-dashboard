@@ -2,13 +2,17 @@ import { store, updateStore } from "../client.js";
 
 export const RoverButton = (state, index) => {
   let { currentRoverIndex } = state;
+  // console.log("state", state);
 
-  function loadRover(index) {
-    console.log("loadRover");
-    let _index = index;
-    _index += 1;
-    updateStore(store, { currentRoverIndex: _index });
-  }
+  // function loadRover(index) {
+  //   console.log("loadRover");
+  //   let _index = index;
+  //   _index += 1;
+  //   updateStore(store, { currentRoverIndex: _index });
+  // }
+
+  // const roverButton = document.getElementById("rover-link");
+  // roverButton.addEventListener("click", loadRover(index));
 
   return `
 
@@ -20,10 +24,6 @@ export const RoverButton = (state, index) => {
   }
   </style>
 
-  <button class=rover-link onclick="${loadRover(currentRoverIndex)}"> 
+  <div class=rover-link onclick="loadRover(${currentRoverIndex})">${state.rovers[index]}  </div>
   `;
 };
-
-{
-  /* <div class="rover-link">${store.rovers[index]}</div> */
-}
