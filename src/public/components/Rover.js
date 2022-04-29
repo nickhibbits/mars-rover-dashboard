@@ -4,10 +4,7 @@ import { getRoverImages } from "../api/getRoverImages.js";
 export const Rover = (state, roverName) => {
   console.log("roverName", roverName);
   console.log("state", state);
-  if (
-    !Object.values(state.roverData[roverName].roverManifest) ||
-    Object.values(state.roverData[roverName].roverManifest).length == 0
-  ) {
+  if (Object.values(state.roverData[roverName].roverManifest).length == 0) {
     getRover(roverName);
     return `<div>Loading...</div>`;
   } else {
@@ -21,14 +18,11 @@ export const Rover = (state, roverName) => {
     const latestPhotoDate =
       state.roverData[roverName].roverManifest.photo_manifest.max_date;
 
-    if (
-      !state.roverData[roverName].recentPhotos ||
-      state.roverData[roverName].recentPhotos.length == 0
-    ) {
+    if (state.roverPhotos[roverName].recentPhotos.length == 0) {
       getRoverImages(roverName, latestPhotoDate);
       return `<div>Loading...</div>`;
     } else {
-      const imageSourceArray = state.roverData[roverName].recentPhotos.map(
+      const imageSourceArray = state.roverPhotos[roverName].recentPhotos.map(
         (photo) => {
           return `<img src=${photo.img_src}></img>`;
         }

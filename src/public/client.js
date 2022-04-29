@@ -6,14 +6,22 @@ export let store = {
   roverData: {
     Curiosity: {
       roverManifest: {},
-      recentPhotos: [],
     },
     Opportunity: {
       roverManifest: {},
-      recentPhotos: [],
     },
     Spirit: {
       roverManifest: {},
+    },
+  },
+  roverPhotos: {
+    Curiosity: {
+      recentPhotos: [],
+    },
+    Opportunity: {
+      recentPhotos: [],
+    },
+    Spirit: {
       recentPhotos: [],
     },
   },

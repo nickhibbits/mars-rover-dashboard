@@ -12,16 +12,15 @@ export const getRoverImages = async (roverName, latestPhotoDate) => {
     .then((roverImageResponse) => {
       // console.log("roverImageResponse", roverImageResponse);
       const roverImagesArray = roverImageResponse.rover;
-      const roverPhotos = roverImagesArray.photos.slice(0, 10);
-      console.log("_roverPhotos", roverPhotos);
+      const _roverPhotos = roverImagesArray.photos.slice(0, 10);
 
-      const roverData = store.roverData;
+      const roverPhotos = store.roverData;
 
       updateStore(store, {
-        roverData: {
-          ...roverData,
+        roverPhotos: {
+          ...roverPhotos,
           [roverName]: {
-            recentPhotos: [...roverPhotos],
+            recentPhotos: [..._roverPhotos],
           },
         },
       });
