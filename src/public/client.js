@@ -33,7 +33,6 @@ const root = document.getElementById("root");
 
 export const updateStore = (store, newState) => {
   store = Object.assign(store, newState);
-  // console.log("newStore", store);
   render(root, store);
 };
 
@@ -42,7 +41,6 @@ const render = async (root, state) => {
 };
 
 window.loadRover = (index) => {
-  console.log("currentRoverIndex", index);
   updateStore(store, { currentRoverIndex: index });
 };
 
