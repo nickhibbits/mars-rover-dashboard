@@ -1,8 +1,6 @@
 export const RoverInfoList = (roverManifest) => {
-  const landingDate = roverManifest.photo_manifest.landing_date;
-  const launchDate = roverManifest.photo_manifest.launch_date;
-  const status = roverManifest.photo_manifest.status;
-  const latestPhotoDate = roverManifest.photo_manifest.max_date;
+  const { landingDate, launchDate, status, latestPhotoDate } =
+    roverManifest.photo_manifest.landing_date;
 
   return `
       <ul>
