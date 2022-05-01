@@ -1,5 +1,6 @@
 import { getRover } from "../api/getRover.js";
 import { getRoverImages } from "../api/getRoverImages.js";
+import { RoverInfoList } from "./RoverInfoList.js";
 
 export const Rover = (state, roverName) => {
   console.log("roverName", roverName);
@@ -8,18 +9,11 @@ export const Rover = (state, roverName) => {
     getRover(roverName);
     return `<div>Loading...</div>`;
   } else {
-    const name = state.roverData[roverName].roverManifest.photo_manifest.name;
-    const landingDate =
-      state.roverData[roverName].roverManifest.photo_manifest.landing_date;
-    const launchDate =
-      state.roverData[roverName].roverManifest.photo_manifest.launch_date;
-    const status =
-      state.roverData[roverName].roverManifest.photo_manifest.status;
-    const latestPhotoDate =
-      state.roverData[roverName].roverManifest.photo_manifest.max_date;
+    const { name, max_date } =
+      state.roverData[roverName].roverManifest.photo_manifest;
 
     if (state.roverPhotos[roverName].recentPhotos.length == 0) {
-      getRoverImages(roverName, latestPhotoDate);
+      getRoverImages(roverName, max_date);
       return `<div>Loading...</div>`;
     } else {
       const imageSourceArray = state.roverPhotos[roverName].recentPhotos.map(
@@ -80,24 +74,7 @@ export const Rover = (state, roverName) => {
         ${imageSourceArray}
       </div>
         <h3 class=rover-info-header>Info</h3>
-      <ul>
-        <li>
-          <div class=info-key>Launch Date</div>
-          <div class=info-value>: ${launchDate}</div>
-        </li>
-        <li>
-          <div class=info-key>Landing Date</div>
-          <div class=info-value>: ${landingDate}</div>
-        </li>
-        <li>
-          <div class=info-key>Status</div>
-          <div class=info-value>: ${status}</div>
-        </li>
-        <li>
-          <div class=info-key>Latest Photo</div>
-          <div class=info-value>: ${latestPhotoDate}</div>
-        </li>
-      </ul>
+      ${RoverInfoList(state.roverData[roverName].roverManifest)}
      `;
     }
   }
